@@ -10,7 +10,6 @@
 		6030FC7023FF0C79007F0901 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030FC6F23FF0C79007F0901 /* AppDelegate.swift */; };
 		6030FC7223FF0C79007F0901 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030FC7123FF0C79007F0901 /* SceneDelegate.swift */; };
 		6030FC7423FF0C79007F0901 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030FC7323FF0C79007F0901 /* ViewController.swift */; };
-		6030FC7723FF0C79007F0901 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6030FC7523FF0C79007F0901 /* Main.storyboard */; };
 		6030FC7923FF0C7A007F0901 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6030FC7823FF0C7A007F0901 /* Assets.xcassets */; };
 		6030FC7C23FF0C7A007F0901 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6030FC7A23FF0C7A007F0901 /* LaunchScreen.storyboard */; };
 		6030FC8723FF0C7A007F0901 /* OnrampProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030FC8623FF0C7A007F0901 /* OnrampProjectTests.swift */; };
@@ -39,7 +38,6 @@
 		6030FC6F23FF0C79007F0901 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6030FC7123FF0C79007F0901 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6030FC7323FF0C79007F0901 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6030FC7623FF0C79007F0901 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6030FC7823FF0C7A007F0901 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6030FC7B23FF0C7A007F0901 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6030FC7D23FF0C7A007F0901 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +74,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		571D2E7D240B19E4009B211B /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				6030FC6F23FF0C79007F0901 /* AppDelegate.swift */,
+				6030FC7123FF0C79007F0901 /* SceneDelegate.swift */,
+				6030FC7823FF0C7A007F0901 /* Assets.xcassets */,
+				6030FC7A23FF0C7A007F0901 /* LaunchScreen.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		6030FC6323FF0C79007F0901 = {
 			isa = PBXGroup;
 			children = (
@@ -99,12 +108,8 @@
 		6030FC6E23FF0C79007F0901 /* OnrampProject */ = {
 			isa = PBXGroup;
 			children = (
-				6030FC6F23FF0C79007F0901 /* AppDelegate.swift */,
-				6030FC7123FF0C79007F0901 /* SceneDelegate.swift */,
+				571D2E7D240B19E4009B211B /* Support */,
 				6030FC7323FF0C79007F0901 /* ViewController.swift */,
-				6030FC7523FF0C79007F0901 /* Main.storyboard */,
-				6030FC7823FF0C7A007F0901 /* Assets.xcassets */,
-				6030FC7A23FF0C7A007F0901 /* LaunchScreen.storyboard */,
 				6030FC7D23FF0C7A007F0901 /* Info.plist */,
 			);
 			path = OnrampProject;
@@ -233,7 +238,6 @@
 			files = (
 				6030FC7C23FF0C7A007F0901 /* LaunchScreen.storyboard in Resources */,
 				6030FC7923FF0C7A007F0901 /* Assets.xcassets in Resources */,
-				6030FC7723FF0C79007F0901 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +300,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6030FC7523FF0C79007F0901 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6030FC7623FF0C79007F0901 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6030FC7A23FF0C7A007F0901 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -442,7 +438,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.onramp.OnrampProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -459,7 +455,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.onramp.OnrampProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
