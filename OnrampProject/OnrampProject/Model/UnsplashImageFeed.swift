@@ -7,20 +7,29 @@
 
 import Foundation
 
-struct UnsplashImages: Codable {
-    let results: [Results]
-}
-
-struct Results: Codable {
-    let urls: Urls
-    let user: User
-}
-
-struct Urls: Codable {
-    let regularSizeImageUrl: String
+struct UnsplashImageFeed: Codable {
+    let images: [Images]
     
     enum CodingKeys: String, CodingKey {
-        case regularSizeImageUrl = "regular"
+        case images = "results"
+    }
+}
+
+struct Images: Codable {
+    let imageURL: ImageURL
+    let user: User
+    
+    enum CodingKeys: String, CodingKey {
+        case imageURL = "urls"
+        case user
+    }
+}
+
+struct ImageURL: Codable {
+    let regularSize: String
+    
+    enum CodingKeys: String, CodingKey {
+        case regularSize = "regular"
     }
 }
 

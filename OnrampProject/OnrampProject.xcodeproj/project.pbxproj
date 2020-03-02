@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		571D2E80240B56BD009B211B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571D2E7F240B56BD009B211B /* NetworkManager.swift */; };
-		571D2E83240B5878009B211B /* UnsplashImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571D2E82240B5878009B211B /* UnsplashImages.swift */; };
+		571D2E83240B5878009B211B /* UnsplashImageFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571D2E82240B5878009B211B /* UnsplashImageFeed.swift */; };
 		571D2E85240B971E009B211B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571D2E84240B971E009B211B /* ViewModel.swift */; };
 		571D2E87240C1978009B211B /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571D2E86240C1978009B211B /* Response.swift */; };
 		571D2E89240C21A3009B211B /* WeddingImageCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571D2E88240C21A3009B211B /* WeddingImageCellModel.swift */; };
@@ -18,6 +18,7 @@
 		571D2E94240C5A67009B211B /* HorizontalSnappingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571D2E93240C5A67009B211B /* HorizontalSnappingController.swift */; };
 		571D2E96240C8BA3009B211B /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571D2E95240C8BA3009B211B /* FavoritesViewController.swift */; };
 		571D2E98240C8BB5009B211B /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571D2E97240C8BB5009B211B /* CategoriesViewController.swift */; };
+		571D2E9B240CA937009B211B /* ErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571D2E9A240CA936009B211B /* ErrorMessages.swift */; };
 		6030FC7023FF0C79007F0901 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030FC6F23FF0C79007F0901 /* AppDelegate.swift */; };
 		6030FC7223FF0C79007F0901 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030FC7123FF0C79007F0901 /* SceneDelegate.swift */; };
 		6030FC7423FF0C79007F0901 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030FC7323FF0C79007F0901 /* ViewController.swift */; };
@@ -46,7 +47,7 @@
 
 /* Begin PBXFileReference section */
 		571D2E7F240B56BD009B211B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		571D2E82240B5878009B211B /* UnsplashImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImages.swift; sourceTree = "<group>"; };
+		571D2E82240B5878009B211B /* UnsplashImageFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImageFeed.swift; sourceTree = "<group>"; };
 		571D2E84240B971E009B211B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		571D2E86240C1978009B211B /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		571D2E88240C21A3009B211B /* WeddingImageCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeddingImageCellModel.swift; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		571D2E93240C5A67009B211B /* HorizontalSnappingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnappingController.swift; sourceTree = "<group>"; };
 		571D2E95240C8BA3009B211B /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		571D2E97240C8BB5009B211B /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		571D2E9A240CA936009B211B /* ErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
 		6030FC6C23FF0C79007F0901 /* OnrampProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnrampProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6030FC6F23FF0C79007F0901 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6030FC7123FF0C79007F0901 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,7 +121,7 @@
 		571D2E81240B5728009B211B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				571D2E82240B5878009B211B /* UnsplashImages.swift */,
+				571D2E82240B5878009B211B /* UnsplashImageFeed.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,6 +156,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		571D2E99240CA903009B211B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				571D2E9A240CA936009B211B /* ErrorMessages.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		6030FC6323FF0C79007F0901 = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +187,7 @@
 		6030FC6E23FF0C79007F0901 /* OnrampProject */ = {
 			isa = PBXGroup;
 			children = (
+				571D2E99240CA903009B211B /* Utilities */,
 				571D2E81240B5728009B211B /* Model */,
 				571D2E8E240C3114009B211B /* View */,
 				571D2E8D240C30EA009B211B /* ViewModel */,
@@ -343,8 +354,9 @@
 				6030FC7023FF0C79007F0901 /* AppDelegate.swift in Sources */,
 				6030FC7223FF0C79007F0901 /* SceneDelegate.swift in Sources */,
 				571D2E85240B971E009B211B /* ViewModel.swift in Sources */,
+				571D2E9B240CA937009B211B /* ErrorMessages.swift in Sources */,
 				571D2E8B240C2689009B211B /* WeddingImageCell.swift in Sources */,
-				571D2E83240B5878009B211B /* UnsplashImages.swift in Sources */,
+				571D2E83240B5878009B211B /* UnsplashImageFeed.swift in Sources */,
 				571D2E87240C1978009B211B /* Response.swift in Sources */,
 				571D2E89240C21A3009B211B /* WeddingImageCellModel.swift in Sources */,
 				571D2E98240C8BB5009B211B /* CategoriesViewController.swift in Sources */,

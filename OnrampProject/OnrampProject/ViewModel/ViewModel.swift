@@ -10,10 +10,10 @@ import UIKit
 
 class ViewModel {
 
-    private var weddingImages: UnsplashImages?
+    private var weddingImages: UnsplashImageFeed?
     
     func getImages(completion: (() -> Void)?) {
-        NetworkManager.shared.getWeddingImages(type: UnsplashImages.self) { [weak self] result in
+        NetworkManager.shared.getWeddingImages(type: UnsplashImageFeed.self) { [weak self] result in
             switch result {
             case .success(let images):
                 self?.weddingImages = images
@@ -26,11 +26,11 @@ class ViewModel {
     
     func cellViewModel(index: Int) -> WeddingImageCellModel? {
         guard let weddingImage = weddingImages else { return nil }
-        let weddingViewerViewModel = WeddingImageCellModel(weddingPost: weddingImage.results[index])
+        let weddingViewerViewModel = WeddingImageCellModel(weddingPost: weddingImage.images[index])
         return weddingViewerViewModel
     }
     
     var count: Int {
-        return weddingImages?.results.count ?? 0
+        return weddingImages?.images.count ?? 0
     }
 }

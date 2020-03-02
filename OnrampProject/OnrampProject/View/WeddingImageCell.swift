@@ -12,7 +12,7 @@ class WeddingImageCell: UICollectionViewCell {
     static let reuseID = "WeddingImageCell"
     
     let postImageView = PostImageView(frame: .zero)
-    let usernameImageView = PostImageView(frame: .zero)
+    let usernameImageView = PostImageView(cornerRadius: 25)
     let usernameLabel = UILabel(frame: .zero)
     let likeButton = UIButton(frame: .zero)
     
@@ -51,6 +51,7 @@ class WeddingImageCell: UICollectionViewCell {
     
     func configureUserInfo() {
         usernameLabel.translatesAutoresizingMaskIntoConstraints = false
+        usernameLabel.textColor = .systemBackground
         usernameImageView.backgroundColor = .clear
         usernameImageView.isOpaque = false
         usernameImageView.backgroundColor = .black

@@ -9,9 +9,9 @@ import UIKit
 
 class WeddingImageCellModel {
     
-    private let weddingPost: Results
+    private let weddingPost: Images
     
-    init(weddingPost: Results) {
+    init(weddingPost: Images) {
         self.weddingPost = weddingPost
     }
     
@@ -20,7 +20,7 @@ class WeddingImageCellModel {
     }
     
     var postImageURL: String {
-        return weddingPost.urls.regularSizeImageUrl
+        return weddingPost.imageURL.regularSize
     }
     
     var userImageURL: String {

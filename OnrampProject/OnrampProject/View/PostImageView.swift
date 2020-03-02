@@ -20,8 +20,13 @@ class PostImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    convenience init(cornerRadius: CGFloat) {
+        self.init(frame: .zero)
+        self.layer.cornerRadius = cornerRadius
+    }
+    
     private func configure() {
-        layer.cornerRadius = 10
+//        layer.cornerRadius = 10
         clipsToBounds = true
         translatesAutoresizingMaskIntoConstraints = false
         contentMode = .scaleAspectFill

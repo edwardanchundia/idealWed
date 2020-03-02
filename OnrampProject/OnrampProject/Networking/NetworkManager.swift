@@ -18,7 +18,8 @@ struct UnsplashAPIEndpoint {
         components.queryItems = [
             URLQueryItem(name: "page", value: "1"),
             URLQueryItem(name: "query", value: "wedding"),
-            URLQueryItem(name: "client_id", value: key)
+            URLQueryItem(name: "client_id", value: key),
+            URLQueryItem(name: "order_by", value: "latest")
         ]
         return components.url
     }
