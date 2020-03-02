@@ -26,6 +26,7 @@ class ViewController: HorizontalSnappingController {
     }
     
     func configureCollectionView() {
+        //collectionView.frame = view.bounds
         collectionView.backgroundColor = .systemBackground
         collectionView.register(WeddingImageCell.self, forCellWithReuseIdentifier: WeddingImageCell.reuseID)
         collectionView.translatesAutoresizingMaskIntoConstraints = false

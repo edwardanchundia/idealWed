@@ -12,13 +12,29 @@ class WedTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewControllers = [createViewerNavigationController()]
+        viewControllers = [
+            createViewerNavigationController(),
+            createFavoritesNavigationController(),
+            createCategoriesNavigationController()
+        ]
     }
 
     func createViewerNavigationController() -> UINavigationController {
         let viewerController = ViewController()
-        viewerController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        viewerController.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
         
         return UINavigationController(rootViewController: viewerController)
+    }
+    
+    func createFavoritesNavigationController() -> UINavigationController {
+        let favoritesNavigationController = FavoritesViewController()
+        favoritesNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        return UINavigationController(rootViewController: favoritesNavigationController)
+    }
+    
+    func createCategoriesNavigationController() -> UINavigationController {
+        let categoriesNavController = CategoriesViewController()
+        categoriesNavController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 2)
+        return UINavigationController(rootViewController: categoriesNavController)
     }
 }
