@@ -34,7 +34,7 @@ class NetworkManager {
     
     private init() {}
     
-    func getWeddingImages<T: Codable>(type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
+    func getFeedImages<T: Codable>(type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
         guard let endpointURL = endpoint.url else {
             print("no endpoint")
             return
@@ -45,7 +45,7 @@ class NetworkManager {
                 print(error)
                 return
             }
-            //print(error)
+    
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 //completion(.failure(error))
                 return
@@ -56,13 +56,13 @@ class NetworkManager {
                 return
             }
             
-            let responsE = Response(data: data)
+            let decoder = Response(data: data)
             
-            guard let decoded = responsE.decode(type) else {
+            guard let feedImages = decoder.decode(type) else {
                 return
             }
             
-            completion(.success(decoded))
+            completion(.success(feedImages))
         }
         
         session.resume()

@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ViewController: HorizontalSnappingController {
+class FeedViewController: HorizontalSnappingController {
 
-    var viewModel = ViewModel()
+    var viewModel = FeedViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class ViewController: HorizontalSnappingController {
     func configureCollectionView() {
         //collectionView.frame = view.bounds
         collectionView.backgroundColor = .systemBackground
-        collectionView.register(WeddingImageCell.self, forCellWithReuseIdentifier: WeddingImageCell.reuseID)
+        collectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: FeedCollectionViewCell.reuseID)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -49,23 +49,25 @@ class ViewController: HorizontalSnappingController {
 
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension FeedViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
 }
 
-extension ViewController {
+extension FeedViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeddingImageCell.reuseID, for: indexPath) as! WeddingImageCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCollectionViewCell.reuseID, for: indexPath) as! FeedCollectionViewCell
         let cellViewModel = viewModel.cellViewModel(index: indexPath.row)
-        cell.viewModel = cellViewModel
+        cell.feedCellViewModel = cellViewModel
         return cell
     }
+    
+    
     
 }

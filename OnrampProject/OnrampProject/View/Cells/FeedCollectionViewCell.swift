@@ -7,21 +7,23 @@
 
 import UIKit
 
-class WeddingImageCell: UICollectionViewCell {
+class FeedCollectionViewCell: UICollectionViewCell {
     
-    static let reuseID = "WeddingImageCell"
+    static let reuseID = "FeedCell"
     
     let postImageView = PostImageView(frame: .zero)
     let usernameImageView = PostImageView(cornerRadius: 25)
     let usernameLabel = UILabel(frame: .zero)
     let likeButton = UIButton(frame: .zero)
     
-    public var viewModel: WeddingImageCellModel? {
+    public var feedCellViewModel: FeedImageCellViewModel? {
         didSet {
-            guard let viewModel = viewModel else { return }
+            guard let viewModel = feedCellViewModel else { return }
             usernameLabel.text = viewModel.username
             postImageView.downloadImage(fromURL: viewModel.postImageURL)
             usernameImageView.downloadImage(fromURL: viewModel.userImageURL)
+            likeButton.tag = viewModel.tagIndex
+            likeButton.setImage(viewModel.likeButtonImage, for: .normal)
         }
     }
     
@@ -52,9 +54,6 @@ class WeddingImageCell: UICollectionViewCell {
     func configureUserInfo() {
         usernameLabel.translatesAutoresizingMaskIntoConstraints = false
         usernameLabel.textColor = .systemBackground
-        usernameImageView.backgroundColor = .clear
-        usernameImageView.isOpaque = false
-        usernameImageView.backgroundColor = .black
         addSubview(usernameImageView)
         addSubview(usernameLabel)
         
@@ -75,11 +74,12 @@ class WeddingImageCell: UICollectionViewCell {
     
     func configureLikeButton() {
         likeButton.translatesAutoresizingMaskIntoConstraints = false
-        likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        //likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         likeButton.contentVerticalAlignment = .fill
         likeButton.contentHorizontalAlignment = .fill
         likeButton.contentMode = .scaleAspectFit
         likeButton.tintColor = .white
+        likeButton.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
         addSubview(likeButton)
         
         let constraints = [
@@ -90,5 +90,31 @@ class WeddingImageCell: UICollectionViewCell {
         ]
         
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    @objc func likeButtonPressed() {
+        if likeButton.hasImage(named: "heart.fill", for: .normal) {
+            feedCellViewModel?.saveObject(action: .remove)
+            likeButton.animateButtonTo(systemName: "heart")
+        } else {
+            feedCellViewModel?.saveObject(action: .add)
+            likeButton.animateButtonTo(systemName: "heart.fill")
+        }
+    }
+}
+
+extension UIButton {
+    func hasImage(named imageName: String, for state: UIControl.State) -> Bool {
+        guard let buttonImage = image(for: state),
+            let namedImage = UIImage(systemName: imageName) else {
+            return false
+        }
+        return buttonImage.pngData() == namedImage.pngData()
+    }
+    
+    func animateButtonTo(systemName: String) {
+        UIView.transition(with: self, duration: 1.0, options: .curveEaseIn, animations: {
+            self.setImage(UIImage(systemName: systemName), for: .normal)
+        }, completion: nil)
     }
 }

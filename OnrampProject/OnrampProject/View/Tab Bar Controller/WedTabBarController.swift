@@ -13,14 +13,14 @@ class WedTabBarController: UITabBarController {
         super.viewDidLoad()
         
         viewControllers = [
-            createViewerNavigationController(),
+            createFeedNavigationController(),
             createFavoritesNavigationController(),
             createCategoriesNavigationController()
         ]
     }
 
-    func createViewerNavigationController() -> UINavigationController {
-        let viewerController = ViewController()
+    func createFeedNavigationController() -> UINavigationController {
+        let viewerController = FeedViewController()
         viewerController.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
         
         return UINavigationController(rootViewController: viewerController)

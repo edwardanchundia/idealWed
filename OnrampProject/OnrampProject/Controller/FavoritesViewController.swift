@@ -9,12 +9,19 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
     
-    let tableView = UITableView()
+    var collectionView: UICollectionView!
+    var viewModel = FavoritesViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
-        configureTableView()
+        configureCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getFavoritesImages()
+        //self.collectionView.reloadData()
     }
     
     func configureViewController() {
@@ -23,27 +30,40 @@ class FavoritesViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    func configureTableView() {
-        view.addSubview(tableView)
-        tableView.frame = view.bounds
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    func configureCollectionView() {
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: FlowLayout.createThreeColumnFlowLayout(in: view))
+        view.addSubview(collectionView)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .systemBackground
+        collectionView.register(FavoritesCollectionViewCell.self, forCellWithReuseIdentifier: FavoritesCollectionViewCell.reuseID)
+    }
+    
+    func getFavoritesImages() {
+        viewModel.getFavorites {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
 }
 
-extension FavoritesViewController: UITableViewDelegate {
+extension FavoritesViewController: UICollectionViewDelegate {
     
 }
 
-extension FavoritesViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+extension FavoritesViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(viewModel.count)
+        return viewModel.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Test"
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoritesCollectionViewCell.reuseID, for: indexPath) as! FavoritesCollectionViewCell
+        let image = viewModel.favorites[indexPath.row].imageURL.regularSize
+        cell.favoriteImageView.downloadImage(fromURL: image)
         return cell
     }
+    
+    
 }

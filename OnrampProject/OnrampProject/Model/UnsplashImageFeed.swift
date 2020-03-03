@@ -7,17 +7,18 @@
 
 import Foundation
 
-struct UnsplashImageFeed: Codable {
-    let images: [Images]
+struct UnsplashImageFeed: Codable, Hashable {
+    let images: [Image]
     
     enum CodingKeys: String, CodingKey {
         case images = "results"
     }
 }
 
-struct Images: Codable {
+struct Image: Codable, Hashable {
     let imageURL: ImageURL
     let user: User
+    var liked = false
     
     enum CodingKeys: String, CodingKey {
         case imageURL = "urls"
@@ -25,7 +26,7 @@ struct Images: Codable {
     }
 }
 
-struct ImageURL: Codable {
+struct ImageURL: Codable, Hashable {
     let regularSize: String
     
     enum CodingKeys: String, CodingKey {
@@ -33,7 +34,7 @@ struct ImageURL: Codable {
     }
 }
 
-struct User: Codable {
+struct User: Codable, Hashable {
     let username: String
     let profileImage: ProfileImage
     
@@ -43,6 +44,6 @@ struct User: Codable {
     }
 }
 
-struct ProfileImage: Codable {
+struct ProfileImage: Codable, Hashable {
     let large: String
 }
