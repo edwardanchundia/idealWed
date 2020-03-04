@@ -9,23 +9,7 @@ import UIKit
 
 struct UnsplashAPIEndpoint {
     
-    fileprivate var url: URLComponents? {
-        let key = "zUW4QV5f8c0EVmwEzmQc8F8toSglC2oVwLajwnieX_Y"
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "api.unsplash.com"
-        components.path = "/search/photos/random"
-        components.queryItems = [
-            URLQueryItem(name: "page", value: "1"),
-            URLQueryItem(name: "query", value: "wedding"),
-            URLQueryItem(name: "client_id", value: key),
-            URLQueryItem(name: "count", value: "30")
-//            URLQueryItem(name: "order_by", value: "latest")
-        ]
-        return components
-    }
-    
-    func addQueryToEndpoint(query: String) -> URL? {
+    fileprivate func addQueryToEndpoint(query: String) -> URL? {
         let key = "zUW4QV5f8c0EVmwEzmQc8F8toSglC2oVwLajwnieX_Y"
         var components = URLComponents()
         components.scheme = "https"
@@ -38,7 +22,6 @@ struct UnsplashAPIEndpoint {
             URLQueryItem(name: "count", value: "30"),
             URLQueryItem(name: "orientation", value: "portrait"),
             URLQueryItem(name: "per_page", value: "50")
-            //URLQueryItem(name: "order_by", value: "latest")
         ]
         return components.url
     }
@@ -53,12 +36,11 @@ class NetworkManager {
     
     private init() {}
     
-    func getFeedImages<T: Codable>(category: String = "Wedding", type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
+    func getFeedImages<T: Codable>(category: String = "Wedding", type: T.Type, completion: @escaping (Result<T, ErrorMessages>) -> Void) {
         guard let endpointURL = endpoint.addQueryToEndpoint(query: category) else {
             print("no endpoint")
             return
         }
-        print(endpointURL)
         
         let session = URLSession.shared.dataTask(with: endpointURL) { (data, response, error) in
             if let error = error {
@@ -67,18 +49,18 @@ class NetworkManager {
             }
     
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                //completion(.failure(error))
+                completion(.failure(.invalidResponse))
                 return
             }
             
             guard let data = data else {
-                //completion(.failure(error))
+                completion(.failure(.invalidData))
                 return
             }
             
             let decoder = Response(data: data)
-            
             guard let feedImages = decoder.decode(type) else {
+                completion(.failure(.invalidData))
                 return
             }
             
@@ -111,7 +93,6 @@ class NetworkManager {
             }
 
             self.cache.setObject(image, forKey: cacheKey)
-            
             completed(image)
         }
         

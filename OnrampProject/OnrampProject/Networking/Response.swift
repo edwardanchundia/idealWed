@@ -24,5 +24,4 @@ struct Response {
             return nil
         }
     }
-    
 }

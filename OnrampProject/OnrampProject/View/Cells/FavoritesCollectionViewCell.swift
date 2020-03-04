@@ -11,7 +11,7 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
     
     static let reuseID = "FavoritesCell"
     
-    var favoriteImageView = PostImageView(frame: .zero)
+    var favoriteImageView = UnsplashImageView(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,7 +23,6 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
     }
     
     func configureImage() {
-        favoriteImageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(favoriteImageView)
         
         let constraints = [

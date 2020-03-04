@@ -7,9 +7,7 @@
 
 import UIKit
 
-class PostImageView: UIImageView {
-
-    let cache = NetworkManager.shared.cache
+class UnsplashImageView: UIImageView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

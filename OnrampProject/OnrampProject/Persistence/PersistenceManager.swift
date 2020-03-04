@@ -23,14 +23,12 @@ enum PersistenceManager {
         retrieveFavorites { (result) in
             switch result {
             case .success(var favorites):
-                
                 switch actionType {
                 case .add:
                     guard !favorites.contains(favorite) else {
                         completion(.alreadyInFavorites)
                         return
                     }
-                    
                     favorites.append(favorite)
                 case .remove:
                     favorites.removeAll {
@@ -50,14 +48,12 @@ enum PersistenceManager {
             completed(.success([]))
             return
         }
-        
-        do {
-            let decoder = JSONDecoder()
-            let favorites = try decoder.decode([Image].self, from: favoritesData)
-            completed(.success(favorites))
-        } catch {
+        let decoder = Response(data: favoritesData)
+        guard let favorites = decoder.decode([Image].self) else {
             completed(.failure(.unableToFavorite))
+            return
         }
+        completed(.success(favorites))
     }
     
     static func save(favorites: [Image]) -> ErrorMessages? {

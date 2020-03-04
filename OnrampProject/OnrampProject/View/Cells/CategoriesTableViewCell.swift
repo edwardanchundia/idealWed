@@ -11,17 +11,8 @@ class CategoriesTableViewCell: UITableViewCell {
     
     static let reuseID = "CategoriesCell"
     
-    let categoriesImageView = PostImageView(frame: .zero)
-    let categoriesLabel = UILabel()
-    
-//    public var categoryViewModel: CategoriesViewModel? {
-//        didSet {
-//            guard let categoryVM = categoryViewModel else {
-//                return
-//            }
-//            categoriesLabel.text = categoryVM
-//        }
-//    }
+    let categoriesImageView = UnsplashImageView(frame: .zero)
+    let categoriesLabel = UnsplashLabel(frame: .zero)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -33,11 +24,7 @@ class CategoriesTableViewCell: UITableViewCell {
     }
     
     func configureCell() {
-        //categoriesImageView.backgroundColor = .blue
-        //categoriesLabel.backgroundColor = .red
         categoriesLabel.textAlignment = .center
-        categoriesLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         addSubview(categoriesImageView)
         categoriesImageView.addSubview(categoriesLabel)
         

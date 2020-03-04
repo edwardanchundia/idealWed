@@ -11,10 +11,10 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     static let reuseID = "FeedCell"
     
-    let postImageView = PostImageView(frame: .zero)
-    let usernameImageView = PostImageView(cornerRadius: 25)
-    let usernameLabel = UILabel(frame: .zero)
-    let likeButton = UIButton(frame: .zero)
+    let postImageView = UnsplashImageView(frame: .zero)
+    let usernameImageView = UnsplashImageView(cornerRadius: 25)
+    let usernameLabel = UnsplashLabel(frame: .zero)
+    let likeButton = UnSplashButton(frame: .zero)
     
     public var feedCellViewModel: FeedImageCellViewModel? {
         didSet {
@@ -22,14 +22,12 @@ class FeedCollectionViewCell: UICollectionViewCell {
             usernameLabel.text = viewModel.username
             postImageView.downloadImage(fromURL: viewModel.postImageURL)
             usernameImageView.downloadImage(fromURL: viewModel.userImageURL)
-            likeButton.tag = viewModel.tagIndex
             likeButton.setImage(viewModel.likeButtonImage, for: .normal)
         }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         configurePostImage()
         configureUserInfo()
         configureLikeButton()
@@ -48,15 +46,12 @@ class FeedCollectionViewCell: UICollectionViewCell {
             postImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
-        
     }
     
-    func configureUserInfo() {
-        usernameLabel.translatesAutoresizingMaskIntoConstraints = false
+    private func configureUserInfo() {
         usernameLabel.textColor = .systemBackground
         addSubview(usernameImageView)
         addSubview(usernameLabel)
-        
         let constraints = [
             usernameImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
             usernameImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
@@ -68,27 +63,18 @@ class FeedCollectionViewCell: UICollectionViewCell {
             usernameLabel.widthAnchor.constraint(equalToConstant: 150),
             usernameLabel.heightAnchor.constraint(equalToConstant: 50)
         ]
-        
         NSLayoutConstraint.activate(constraints)
     }
     
     func configureLikeButton() {
-        likeButton.translatesAutoresizingMaskIntoConstraints = false
-        //likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-        likeButton.contentVerticalAlignment = .fill
-        likeButton.contentHorizontalAlignment = .fill
-        likeButton.contentMode = .scaleAspectFit
-        likeButton.tintColor = .white
         likeButton.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
         addSubview(likeButton)
-        
         let constraints = [
             likeButton.centerYAnchor.constraint(equalTo: usernameLabel.centerYAnchor),
             likeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
             likeButton.heightAnchor.constraint(equalToConstant: 30),
             likeButton.widthAnchor.constraint(equalToConstant: 30)
         ]
-        
         NSLayoutConstraint.activate(constraints)
     }
     
@@ -100,21 +86,5 @@ class FeedCollectionViewCell: UICollectionViewCell {
             feedCellViewModel?.saveObject(action: .add)
             likeButton.animateButtonTo(systemName: "heart.fill")
         }
-    }
-}
-
-extension UIButton {
-    func hasImage(named imageName: String, for state: UIControl.State) -> Bool {
-        guard let buttonImage = image(for: state),
-            let namedImage = UIImage(systemName: imageName) else {
-            return false
-        }
-        return buttonImage.pngData() == namedImage.pngData()
-    }
-    
-    func animateButtonTo(systemName: String) {
-        UIView.transition(with: self, duration: 1.0, options: .curveEaseIn, animations: {
-            self.setImage(UIImage(systemName: systemName), for: .normal)
-        }, completion: nil)
     }
 }
