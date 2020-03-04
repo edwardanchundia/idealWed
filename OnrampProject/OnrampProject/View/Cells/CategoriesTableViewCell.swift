@@ -13,10 +13,19 @@ class CategoriesTableViewCell: UITableViewCell {
     
     let categoriesImageView = PostImageView(frame: .zero)
     let categoriesLabel = UILabel()
+    
+//    public var categoryViewModel: CategoriesViewModel? {
+//        didSet {
+//            guard let categoryVM = categoryViewModel else {
+//                return
+//            }
+//            categoriesLabel.text = categoryVM
+//        }
+//    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-         configureCell()
+        configureCell()
     }
     
     required init?(coder: NSCoder) {
@@ -24,8 +33,9 @@ class CategoriesTableViewCell: UITableViewCell {
     }
     
     func configureCell() {
-        categoriesImageView.backgroundColor = .blue
-        categoriesLabel.backgroundColor = .red
+        //categoriesImageView.backgroundColor = .blue
+        //categoriesLabel.backgroundColor = .red
+        categoriesLabel.textAlignment = .center
         categoriesLabel.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(categoriesImageView)

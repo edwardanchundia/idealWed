@@ -10,19 +10,24 @@ import UIKit
 class FeedViewController: HorizontalSnappingController {
 
     var viewModel = FeedViewModel()
+    var category = "Wedding"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
         configureCollectionView()
-        fetchImages()
+        fetchImages(category: category)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(true, animated: true)
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+        
     }
     
     func configureCollectionView() {
@@ -39,8 +44,9 @@ class FeedViewController: HorizontalSnappingController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    func fetchImages() {
-        viewModel.getImages {
+    func fetchImages(category: String) {
+        collectionView.setContentOffset(.zero, animated: true)
+        viewModel.getImages(category: category) {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }

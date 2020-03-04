@@ -12,8 +12,8 @@ class FeedViewModel {
 
     private var feedImages: UnsplashImageFeed?
     
-    func getImages(completion: (() -> Void)?) {
-        NetworkManager.shared.getFeedImages(type: UnsplashImageFeed.self) { [weak self] result in
+    func getImages(category: String, completion: (() -> Void)?) {
+        NetworkManager.shared.getFeedImages(category: category, type: UnsplashImageFeed.self) { [weak self] result in
             switch result {
             case .success(let images):
                 self?.feedImages = images
