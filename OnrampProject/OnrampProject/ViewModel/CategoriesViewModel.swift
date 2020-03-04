@@ -5,7 +5,7 @@
 //  Created by Edward Anchundia on 3/3/20.
 //
 
-import Foundation
+import UIKit
 
 enum Categories: Int {
     case venues = 0
@@ -17,6 +17,12 @@ enum Categories: Int {
 
 class CategoriesViewModel {
     
-    let categories = ["Wedding Cakes", "Engagement Rings", "Wedding Dress", "Wedding Flowers", "Honeymoon"]
+    let categories: [String: UIImage] = [
+        "Wedding Cakes": UIImage(named: "weddingCake")!,
+        "Engagement Rings": UIImage(named: "engagmentRings")!,
+        "Bridal Dress": UIImage(named: "weddingDress")!,
+        "Wedding Flowers": UIImage(named: "weddingFlowers")!,
+        "Honeymoon": UIImage(named: "honeymoon")!
+    ]
 
 }

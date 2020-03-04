@@ -11,7 +11,7 @@ class WedTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        UITabBar.appearance().tintColor = .systemTeal
         viewControllers = [
             createFeedNavigationController(),
             createFavoritesNavigationController(),
@@ -21,20 +21,19 @@ class WedTabBarController: UITabBarController {
 
     func createFeedNavigationController() -> UINavigationController {
         let viewerController = FeedViewController()
-        viewerController.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
-        
+        viewerController.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "photo.fill.on.rectangle.fill"), tag: 0)
         return UINavigationController(rootViewController: viewerController)
     }
     
     func createFavoritesNavigationController() -> UINavigationController {
         let favoritesNavigationController = FavoritesViewController()
-        favoritesNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        favoritesNavigationController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "heart.circle"), tag: 1)
         return UINavigationController(rootViewController: favoritesNavigationController)
     }
     
     func createCategoriesNavigationController() -> UINavigationController {
         let categoriesNavController = CategoriesViewController()
-        categoriesNavController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 2)
+        categoriesNavController.tabBarItem = UITabBarItem(title: "Categories", image: UIImage(systemName: "list.dash"), tag: 2)
         return UINavigationController(rootViewController: categoriesNavController)
     }
 }

@@ -12,6 +12,7 @@ class CategoriesTableViewCell: UITableViewCell {
     static let reuseID = "CategoriesCell"
     
     let categoriesImageView = UnsplashImageView(frame: .zero)
+    let view = UIView()
     let categoriesLabel = UnsplashLabel(frame: .zero)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -25,7 +26,12 @@ class CategoriesTableViewCell: UITableViewCell {
     
     func configureCell() {
         categoriesLabel.textAlignment = .center
+        categoriesLabel.textColor = .white
+        view.backgroundColor = .black
+        view.alpha = 0.5
+        view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(categoriesImageView)
+        categoriesImageView.addSubview(view)
         categoriesImageView.addSubview(categoriesLabel)
         
         let constraints = [
@@ -33,6 +39,11 @@ class CategoriesTableViewCell: UITableViewCell {
             categoriesImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             categoriesImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             categoriesImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            
+            view.topAnchor.constraint(equalTo: categoriesImageView.topAnchor),
+            view.leadingAnchor.constraint(equalTo: categoriesImageView.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: categoriesImageView.trailingAnchor),
+            view.bottomAnchor.constraint(equalTo: categoriesImageView.bottomAnchor),
             
             categoriesLabel.centerYAnchor.constraint(equalTo: categoriesImageView.centerYAnchor),
             categoriesLabel.centerXAnchor.constraint(equalTo: categoriesImageView.centerXAnchor),

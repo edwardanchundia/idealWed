@@ -19,7 +19,7 @@ struct UnsplashAPIEndpoint {
             URLQueryItem(name: "page", value: "1"),
             URLQueryItem(name: "query", value: query),
             URLQueryItem(name: "client_id", value: key),
-            URLQueryItem(name: "count", value: "30"),
+//            URLQueryItem(name: "count", value: "30"),
             URLQueryItem(name: "orientation", value: "portrait"),
             URLQueryItem(name: "per_page", value: "50")
         ]
@@ -38,13 +38,14 @@ class NetworkManager {
     
     func getFeedImages<T: Codable>(category: String = "Wedding", type: T.Type, completion: @escaping (Result<T, ErrorMessages>) -> Void) {
         guard let endpointURL = endpoint.addQueryToEndpoint(query: category) else {
-            print("no endpoint")
+            completion(.failure(.noEndpoint))
             return
         }
         
         let session = URLSession.shared.dataTask(with: endpointURL) { (data, response, error) in
             if let error = error {
                 print(error)
+                completion(.failure(.unableToComplete))
                 return
             }
     

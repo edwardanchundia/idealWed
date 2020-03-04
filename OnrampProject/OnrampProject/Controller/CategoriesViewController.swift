@@ -46,18 +46,20 @@ extension CategoriesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CategoriesTableViewCell.reuseID, for: indexPath) as! CategoriesTableViewCell
-        cell.categoriesLabel.text = viewModel.categories[indexPath.row]
+        cell.categoriesLabel.text = Array(viewModel.categories.keys)[indexPath.row]
+        cell.categoriesImageView.image = Array(viewModel.categories.values)[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 200
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let navVC = tabBarController?.viewControllers![0] as! UINavigationController//
         let feedViewController = navVC.topViewController as! FeedViewController
-        feedViewController.fetchImages(category: viewModel.categories[indexPath.row])
+        let keys = Array(viewModel.categories.keys)
+        feedViewController.fetchImages(category: keys[indexPath.row])
         DispatchQueue.main.async {
             self.tabBarController?.selectedIndex = 0
         }

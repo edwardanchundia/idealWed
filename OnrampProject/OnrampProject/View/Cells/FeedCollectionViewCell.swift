@@ -49,7 +49,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureUserInfo() {
-        usernameLabel.textColor = .systemBackground
+        usernameLabel.textColor = .white
         addSubview(usernameImageView)
         addSubview(usernameLabel)
         let constraints = [

@@ -14,5 +14,6 @@ enum ErrorMessages: String, Error {
     case invalidData = "The data recieved from the server was invalid. Please try again."
     case unableToFavorite = "There was an error favoriting this post. Please try again."
     case alreadyInFavorites = "You already favorited this post."
+    case noEndpoint = "There was no endpoint."
     
 }
