@@ -50,7 +50,6 @@ class CategoriesTableViewCell: UITableViewCell {
             categoriesLabel.heightAnchor.constraint(equalToConstant: 30),
             categoriesLabel.widthAnchor.constraint(equalToConstant: 150),
         ]
-        
         NSLayoutConstraint.activate(constraints)
     }
     

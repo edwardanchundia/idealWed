@@ -11,6 +11,9 @@ import UIKit
 class FeedViewModel {
 
     private var feedImages: UnsplashImageFeed?
+    var count: Int {
+           return feedImages?.images.count ?? 0
+       }
     
     func getImages(category: String, completion: (() -> Void)?) {
         NetworkManager.shared.getFeedImages(category: category, type: UnsplashImageFeed.self) { [weak self] result in
@@ -29,8 +32,5 @@ class FeedViewModel {
         let weddingViewerViewModel = FeedImageCellViewModel(feedImage: feedImage, index: index)
         return weddingViewerViewModel
     }
-    
-    var count: Int {
-        return feedImages?.images.count ?? 0
-    }
+
 }

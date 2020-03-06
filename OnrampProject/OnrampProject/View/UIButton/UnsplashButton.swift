@@ -25,4 +25,5 @@ class UnSplashButton: UIButton {
         contentMode = .scaleAspectFit
         tintColor = .white
     }
+    
 }

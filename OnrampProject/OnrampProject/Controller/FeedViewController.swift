@@ -14,7 +14,6 @@ class FeedViewController: HorizontalSnappingController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .systemBackground
         configureCollectionView()
         fetchImages(category: category)
@@ -22,7 +21,6 @@ class FeedViewController: HorizontalSnappingController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.setNavigationBarHidden(true, animated: true)
         DispatchQueue.main.async {
             self.collectionView.reloadData()
@@ -31,10 +29,8 @@ class FeedViewController: HorizontalSnappingController {
     }
     
     func configureCollectionView() {
-        //collectionView.frame = view.bounds
-        collectionView.backgroundColor = .systemBackground
         collectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: FeedCollectionViewCell.reuseID)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
         let constraints = [
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -73,7 +69,5 @@ extension FeedViewController {
         cell.feedCellViewModel = cellViewModel
         return cell
     }
-    
-    
     
 }

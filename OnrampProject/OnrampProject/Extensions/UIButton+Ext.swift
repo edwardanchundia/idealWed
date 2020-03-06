@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIButton {
+    
     func hasImage(named imageName: String, for state: UIControl.State) -> Bool {
         guard let buttonImage = image(for: state),
             let namedImage = UIImage(systemName: imageName) else {
@@ -16,9 +17,10 @@ extension UIButton {
         return buttonImage.pngData() == namedImage.pngData()
     }
     
-    func animateButtonTo(systemName: String) {
+    func animateButtonImageTo(systemName: String) {
         UIView.transition(with: self, duration: 1.0, options: .curveEaseIn, animations: {
             self.setImage(UIImage(systemName: systemName), for: .normal)
         }, completion: nil)
     }
+    
 }

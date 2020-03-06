@@ -35,32 +35,31 @@ class FeedImageCellViewModel {
     
     var likeButtonImage: UIImage {
         if imageLikedCheck(favorite: feedImage) {
-            return UIImage(systemName: "heart.fill")!
+            return UIImage(systemName: Images.heartFilled)!
         } else {
-            return UIImage(systemName: "heart")!
+            return UIImage(systemName: Images.heartUnFilled)!
         }
-//        return UIImage(systemName: "heart")!
     }
     
     func saveObject(action: PersistenceActionType) {
         PersistenceManager.updateWith(favorite: feedImage, actionType: action) { (error) in
-//            print(error)
+            guard let error = error else {
+                return
+            }
+            print(error)
         }
     }
     
     func imageLikedCheck(favorite: Image) -> Bool {
-        var liked = favorite.liked
+        var liked = false
         PersistenceManager.retrieveFavorites { (result) in
             switch result {
             case .success(let favorites):
                 guard !favorites.contains(favorite) else {
                     liked = true
-//                    favorite.liked = true
                     return
                 }
-//                print(favorites)
                 liked = false
-//                self.feedImage.liked = false
             case.failure(_):
                 return
             }
@@ -69,6 +68,7 @@ class FeedImageCellViewModel {
         return liked
     }
     
+    //For testing
     func resetDefaults() {
         let defaults = UserDefaults.standard
         let dictionary = defaults.dictionaryRepresentation()

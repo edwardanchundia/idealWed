@@ -14,7 +14,6 @@ class CategoriesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureViewController()
         configureTableView()
     }
@@ -35,11 +34,7 @@ class CategoriesViewController: UIViewController {
     
 }
 
-extension CategoriesViewController: UITableViewDelegate {
-    
-}
-
-extension CategoriesViewController: UITableViewDataSource {
+extension CategoriesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.categories.count
     }
@@ -56,12 +51,13 @@ extension CategoriesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let navVC = tabBarController?.viewControllers![0] as! UINavigationController//
+        let navVC = tabBarController?.viewControllers![1] as! UINavigationController
         let feedViewController = navVC.topViewController as! FeedViewController
         let keys = Array(viewModel.categories.keys)
         feedViewController.fetchImages(category: keys[indexPath.row])
-        DispatchQueue.main.async {
-            self.tabBarController?.selectedIndex = 0
-        }
+//        DispatchQueue.main.async {
+        tabBarController?.selectedIndex = 1
+//            self.navigationController?.show(feedViewController, sender: nil)
+//        }
     }
 }

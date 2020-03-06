@@ -9,8 +9,6 @@ import UIKit
 
 class FavoritesViewModel {
     
-    //private var feedImages: UnsplashImageFeed?
-    
     var favorites = [Image]()
     var count: Int {
         return favorites.count

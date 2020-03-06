@@ -21,4 +21,5 @@ class UnsplashLabel: UILabel {
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
     }
+    
 }

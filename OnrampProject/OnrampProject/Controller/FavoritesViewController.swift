@@ -16,12 +16,12 @@ class FavoritesViewController: UIViewController {
         super.viewDidLoad()
         configureViewController()
         configureCollectionView()
+        getFavoritesImages()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getFavoritesImages()
-        //self.collectionView.reloadData()
     }
     
     func configureViewController() {
@@ -48,13 +48,9 @@ class FavoritesViewController: UIViewController {
     }
 }
 
-extension FavoritesViewController: UICollectionViewDelegate {
+extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
-}
-
-extension FavoritesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(viewModel.count)
         return viewModel.count
     }
     
@@ -64,6 +60,5 @@ extension FavoritesViewController: UICollectionViewDataSource {
         cell.favoriteImageView.downloadImage(fromURL: image)
         return cell
     }
-    
     
 }

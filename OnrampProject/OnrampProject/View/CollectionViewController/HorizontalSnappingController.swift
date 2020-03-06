@@ -8,12 +8,14 @@
 import UIKit
 
 class HorizontalSnappingController: UICollectionViewController {
-    
+
     init() {
         let layout = SnappingLayout()
         layout.scrollDirection = .horizontal
         super.init(collectionViewLayout: layout)
         collectionView.decelerationRate = .fast
+        collectionView.backgroundColor = .systemBackground
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder: NSCoder) {

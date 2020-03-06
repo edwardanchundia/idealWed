@@ -52,6 +52,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
         usernameLabel.textColor = .white
         addSubview(usernameImageView)
         addSubview(usernameLabel)
+        
         let constraints = [
             usernameImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
             usernameImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
@@ -69,6 +70,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
     func configureLikeButton() {
         likeButton.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
         addSubview(likeButton)
+        
         let constraints = [
             likeButton.centerYAnchor.constraint(equalTo: usernameLabel.centerYAnchor),
             likeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
@@ -79,12 +81,13 @@ class FeedCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func likeButtonPressed() {
-        if likeButton.hasImage(named: "heart.fill", for: .normal) {
+        if likeButton.hasImage(named: Images.heartFilled, for: .normal) {
             feedCellViewModel?.saveObject(action: .remove)
-            likeButton.animateButtonTo(systemName: "heart")
+            likeButton.animateButtonImageTo(systemName: Images.heartUnFilled)
         } else {
             feedCellViewModel?.saveObject(action: .add)
-            likeButton.animateButtonTo(systemName: "heart.fill")
+            likeButton.animateButtonImageTo(systemName: Images.heartFilled)
         }
     }
+    
 }

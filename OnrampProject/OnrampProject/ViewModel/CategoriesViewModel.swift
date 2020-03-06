@@ -7,14 +7,6 @@
 
 import UIKit
 
-enum Categories: Int {
-    case venues = 0
-    case engagmentRings
-    case dress
-    case flowers
-    case honeymoon
-}
-
 class CategoriesViewModel {
     
     let categories: [String: UIImage] = [

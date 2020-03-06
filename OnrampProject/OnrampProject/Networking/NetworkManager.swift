@@ -19,7 +19,6 @@ struct UnsplashAPIEndpoint {
             URLQueryItem(name: "page", value: "1"),
             URLQueryItem(name: "query", value: query),
             URLQueryItem(name: "client_id", value: key),
-//            URLQueryItem(name: "count", value: "30"),
             URLQueryItem(name: "orientation", value: "portrait"),
             URLQueryItem(name: "per_page", value: "50")
         ]
@@ -92,11 +91,10 @@ class NetworkManager {
                     completed(nil)
                     return
             }
-
             self.cache.setObject(image, forKey: cacheKey)
             completed(image)
         }
-        
         task.resume()
     }
+    
 }
