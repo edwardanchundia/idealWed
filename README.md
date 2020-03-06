@@ -1,5 +1,5 @@
 # IdealWed
-
+<img src="https://github.com/edwardanchundia/idealWed/blob/master/Images/AppIcon.png" width="320" />
 IdealWed is the place where you find inspiration for your next wedding. Whether you are planning it for yourself or a friend, IdealWed is the starting point that will help you imagine the wondrous occasion. This project was specifically made for Onramp.
 
 This project satisfies the requirements with the following:
