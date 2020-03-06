@@ -68,7 +68,7 @@ enum PersistenceManager {
   }
   
   static func retrieveFavorites(completed: @escaping (Result<[Image], ErrorMessages>) -> Void) {
-  ...
+    ...
   }
   
 }
