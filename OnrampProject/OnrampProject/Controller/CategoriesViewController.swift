@@ -55,9 +55,6 @@ extension CategoriesViewController: UITableViewDataSource, UITableViewDelegate {
         let feedViewController = navVC.topViewController as! FeedViewController
         let keys = Array(viewModel.categories.keys)
         feedViewController.fetchImages(category: keys[indexPath.row])
-//        DispatchQueue.main.async {
         tabBarController?.selectedIndex = 1
-//            self.navigationController?.show(feedViewController, sender: nil)
-//        }
     }
 }
