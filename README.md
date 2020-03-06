@@ -12,6 +12,8 @@ This project satisfies the requirements with the following:
 
 All UI is done programatically.
 
+<img src="https://github.com/edwardanchundia/idealWed/blob/master/Images/AppDemo.gif" width="320" />
+
 ## Exploring MVVM
 
 All of the business logic is done on the ViewModels of each ViewController. For the FeedViewController, the network call is done on FeedViewModel. Since the feed is using a custom collection view cell, a CellViewModel was made to go along the recycling of the cell. The FeedImageCellViewModel updates the UI with the appropriate information sent to the custom cell file.
